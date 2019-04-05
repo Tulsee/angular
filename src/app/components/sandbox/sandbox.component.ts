@@ -4,30 +4,26 @@ import { Component } from "@angular/core";
   selector: "sandbox",
   template: `
     <h1>hello welcome to my first Angular app</h1>
-    <h3>This page designer is {{ name }}</h3>
-    <ul>
-      <li *ngFor="let person of name">
-        {{ person }}
-      </li>
-    </ul>
-    <ul>
-      <li *ngFor="let person of name2">
-        {{ person.firstName }} {{ person.lastName }}
-      </li>
-    </ul>
+    <hr />
+    <h5>
+      Hello
+      <!--
+      <span *ngIf="showName">{{ name }}</span>
+      <span *ngIf="!showName">world</span>
+      -->
+      <p>{{ showName ? name : "world" }}</p>
+    </h5>
+    <hr />
+    <div [ngSwitch]="case">
+      <div *ngSwitchCase="'1'">hello world</div>
+      <div *ngSwitchCase="'2'">Hi there</div>
+      <div *ngSwitchCase="'3'">whats up</div>
+      <div *ngSwitchDefault>hello</div>
+    </div>
   `
 })
 export class SandboxComponent {
-  name = ["harry", "potter", "gelen"];
-
-  name2 = [
-    {
-      firstName: "harry",
-      lastName: "happier"
-    },
-    {
-      firstName: "potter",
-      lastName: "peter"
-    }
-  ];
+  name: string = "tulsee";
+  showName: boolean = true;
+  case: number = 3;
 }
